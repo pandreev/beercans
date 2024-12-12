@@ -342,7 +342,7 @@
                 const beerElement = document.createElement('div');
                 beerElement.className = 'bg-gray-100 rounded-lg p-3 text-center';
                 beerElement.innerHTML = `
-                    <img src="${beer.image}" alt="${beer.name}" class="mx-auto mb-2 h-48 object-contain">
+                    <img rel="preload" src="${beer.image}" alt="${beer.name}" class="mx-auto mb-2 h-48 object-contain">
                     <h4 class="font-semibold">${beer.name}</h4>
                     <p class="text-gray-600">ABV: ${beer.abv} ( ${beer.volume} )</p>
                     <p class="text-gray-600">Year: ${beer.year}</p>
