@@ -7,6 +7,8 @@
 </head>
 <body class="bg-gray-100 p-8">
     <div class="max-w-6xl mx-auto">
+        <div id="preload" style="display: none">
+        </div>
         <h1 class="text-4xl font-bold text-center mb-8">Pesho's Beer Can Collection</h1>
         
         <div class="flex mb-4">
@@ -312,6 +314,14 @@
                 `;
             document.getElementById("countryTabs").style.display="none";
             document.getElementById("breweryTabs").style.display="none";
+            const preload = document.getElementById('preload');
+            beerCollection.forEach(beer => {
+                const imageElement = document.createElement('div');
+                imageElement.innerHTML = `
+                    <img src="${beer.image}" alt="${beer.name}">
+                `;
+                preload.appendChild(imageElement);
+            });
         }
 
         function renderCountryTabs(continent) {
@@ -367,7 +377,7 @@
                         t.className = 'px-4 py-2 rounded bg-gray-200';
                     });
                     tab.className = 'px-4 py-2 rounded bg-blue-300 text-white';
-                    
+
                     renderBeerContent(country, brewery);
                 });
                 breweryContainer.appendChild(tab);
@@ -378,7 +388,7 @@
 
         function renderBeerContent(country, brewery) {
             const contentContainer = document.getElementById('beerContent');
-            const beers = beerCollection.filter(beer => 
+            const beers = beerCollection.filter(beer =>
                 beer.country === country && beer.brewery === brewery
             );
 
